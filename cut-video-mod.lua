@@ -111,7 +111,7 @@ function fn_cut_finish_gif(p1,p2)
       end
     end
     local output_directory, _ = utils.split_path(mp.get_property("path"))
-    local output_filename = mp.get_property("filename").."_"..string.gsub(start_time_formated,":",".").." – "..string.gsub(end_time_formated,":",".").."."..output_format
+    local output_filename = mp.get_property("filename/no-ext").."_"..string.gsub(start_time_formated,":",".").." – "..string.gsub(end_time_formated,":",".").."."..output_format
     local output_path = utils.join_path(output_directory, output_filename)
     local args = {'ffmpeg', '-ss', tostring(start_time_seconds), "-to", tostring(end_time_seconds), "-i", tostring(mp.get_property("path"))}
     for token in string.gmatch(video_args, "[^%s]+") do
