@@ -160,7 +160,7 @@ function fn_cut_finish_subs(p1,p2)
       end
     end
     local output_directory, _ = utils.split_path(mp.get_property("path"))
-    local output_filename = mp.get_property("filename/no-ext").."_"..string.gsub(start_time_formated,":",".").." – "..string.gsub(end_time_formated,":",".").."(Hardsub)".."."..output_format
+    local output_filename = mp.get_property("filename/no-ext").."_"..string.gsub(start_time_formated,":",".").." – "..string.gsub(end_time_formated,":",".").." (Hardsub)".."."..output_format
     local output_path = utils.join_path(output_directory, output_filename)
 	local args = {"ffmpeg", "-ss", tostring(start_time_seconds), "-to", tostring(end_time_seconds), "-copyts", "-i", tostring(mp.get_property("path")), "-ss", tostring(start_time_seconds), "-filter_complex", "subtitles='"..mp.get_property("filename").."':si="..math.floor(mp.get_property("sid")-1)}
     for token in string.gmatch(video_args, "[^%s]+") do
